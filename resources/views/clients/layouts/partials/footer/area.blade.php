@@ -6,7 +6,7 @@
                     <div class="single-footer-caption">
                         <!-- logo -->
                         <div class="footer-logo">
-                            <a href="index.html"><img src="/client/assets/img/logo/logo2_footer.png"
+                            <a href="index.html"><img src="/assets/client/img/logo/logo2_footer.png"
                                     alt=""></a>
                         </div>
                         <div class="footer-tittle">
@@ -44,7 +44,7 @@
                                     <div class="form-icon">
                                         <button type="submit" name="submit" id="newsletter-submit"
                                             class="email_icon newsletter-submit button-contactForm"><img
-                                                src="/client/assets/img/logo/form-iocn.png"
+                                                src="/assets/client/img/logo/form-iocn.png"
                                                 alt=""></button>
                                     </div>
                                     <div class="mt-10 info"></div>
@@ -61,17 +61,17 @@
                     </div>
                     <div class="instagram-gellay">
                         <ul class="insta-feed">
-                            <li><a href="#"><img src="/client/assets/img/post/instra1.jpg"
+                            <li><a href="#"><img src="/assets/client/img/post/instra1.jpg"
                                         alt=""></a></li>
-                            <li><a href="#"><img src="/client/assets/img/post/instra2.jpg"
+                            <li><a href="#"><img src="/assets/client/img/post/instra2.jpg"
                                         alt=""></a></li>
-                            <li><a href="#"><img src="/client/assets/img/post/instra3.jpg"
+                            <li><a href="#"><img src="/assets/client/img/post/instra3.jpg"
                                         alt=""></a></li>
-                            <li><a href="#"><img src="/client/assets/img/post/instra4.jpg"
+                            <li><a href="#"><img src="/assets/client/img/post/instra4.jpg"
                                         alt=""></a></li>
-                            <li><a href="#"><img src="/client/assets/img/post/instra5.jpg"
+                            <li><a href="#"><img src="/assets/client/img/post/instra5.jpg"
                                         alt=""></a></li>
-                            <li><a href="#"><img src="/client/assets/img/post/instra6.jpg"
+                            <li><a href="#"><img src="/assets/client/img/post/instra6.jpg"
                                         alt=""></a></li>
                         </ul>
                     </div>

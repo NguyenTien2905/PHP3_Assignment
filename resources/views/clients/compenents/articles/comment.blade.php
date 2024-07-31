@@ -4,7 +4,7 @@
        <div class="single-comment justify-content-between d-flex">
           <div class="user justify-content-between d-flex">
              <div class="thumb">
-                <img src="/client/assets/img/comment/comment_1.png" alt="">
+                <img src="/assets/client/img/comment/comment_1.png" alt="">
              </div>
              <div class="desc">
                 <p class="comment">
@@ -30,7 +30,7 @@
        <div class="single-comment justify-content-between d-flex">
           <div class="user justify-content-between d-flex">
              <div class="thumb">
-                <img src="/client/assets/img/comment/comment_2.png" alt="">
+                <img src="/assets/client/img/comment/comment_2.png" alt="">
              </div>
              <div class="desc">
                 <p class="comment">
@@ -56,7 +56,7 @@
        <div class="single-comment justify-content-between d-flex">
           <div class="user justify-content-between d-flex">
              <div class="thumb">
-                <img src="/client/assets/img/comment/comment_3.png" alt="">
+                <img src="/assets/client/img/comment/comment_3.png" alt="">
              </div>
              <div class="desc">
                 <p class="comment">

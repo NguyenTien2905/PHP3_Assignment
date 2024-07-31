@@ -26,7 +26,7 @@
                                         </a>
                                     </div>
                                     <div class="blog_details">
-                                        <a class="d-inline-block" href="single-blog.html">
+                                        <a class="d-inline-block" href="{{ route('article-show', $item->id) }}s">
                                             <h2>{{ $item->title }}</h2>
                                         </a>
                                         <p class="text-truncate">{{ $item->content}}</p>

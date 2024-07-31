@@ -4,8 +4,8 @@
              <div class="row d-flex justify-content-between align-items-center">
                  <div class="header-info-left">
                      <ul>  
-                         <li><img src="/client/assets/img/icon/header_icon1.png" alt="">34ºc, Sunny </li>
-                         <li><img src="/client/assets/img/icon/header_icon1.png" alt="">Tuesday, 18th June, 2019</li>
+                         <li><img src="/assets/client/img/icon/header_icon1.png" alt="">34ºc, Sunny </li>
+                         <li><img src="/assets/client/img/icon/header_icon1.png" alt="">Tuesday, 18th June, 2019</li>
                      </ul>
                  </div>
                  <div class="header-info-right">

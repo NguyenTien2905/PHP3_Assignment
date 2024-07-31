@@ -42,6 +42,16 @@ class PostController extends Controller
             ->where('title', 'like', '%' . $keyword . '%')
             ->get();
 
-        return view('clients.article-search', compact('articles', 'keyword'));
+        $categories = DB::table('categories')
+            ->select('id', 'name')
+            ->get();
+
+        $posts = DB::table('articles')
+            ->select('id', 'title', 'image_url', 'created_at')
+            ->orderByDesc('created_at')
+            ->limit(4)
+            ->get();
+
+        return view('clients.article-search', compact('articles', 'keyword', 'categories', 'posts'));
     }
 }

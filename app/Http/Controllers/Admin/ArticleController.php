@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -12,15 +13,15 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        
     }
 
     /**

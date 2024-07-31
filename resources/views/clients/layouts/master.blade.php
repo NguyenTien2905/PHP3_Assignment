@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="/client/site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="/client/assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/client/img/favicon.ico">
 
     <!-- CSS here -->
     @include('clients.layouts.partials.css')

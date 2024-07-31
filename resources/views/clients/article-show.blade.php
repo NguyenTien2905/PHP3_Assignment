@@ -52,7 +52,7 @@
                                         class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
                                         <div class="thumb">
                                             <a href="#">
-                                                <img class="img-fluid" src="/client/assets/img/post/preview.png"
+                                                <img class="img-fluid" src="/assets/client/img/post/preview.png"
                                                     alt="">
                                             </a>
                                         </div>
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="thumb">
                                             <a href="#">
-                                                <img class="img-fluid" src="/client/assets/img/post/next.png"
+                                                <img class="img-fluid" src="/assets/client/img/post/next.png"
                                                     alt="">
                                             </a>
                                         </div>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="blog-author">
                             <div class="media align-items-center">
-                                <img src="/client/assets/img/blog/author.png" alt="">
+                                <img src="/assets/client/img/blog/author.png" alt="">
                                 <div class="media-body">
                                     <a href="#">
                                         <h4>Harvard milan</h4>

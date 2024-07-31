@@ -4,14 +4,14 @@
             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                 <!-- sticky -->
                     <div class="sticky-logo">
-                        <a href="index.html"><img src="/client/assets/img/logo/logo.png" alt=""></a>
+                        <a href="index.html"><img src="/assets/client/img/logo/logo.png" alt=""></a>
                     </div>
                 <!-- Main-menu -->
                 <div class="main-menu d-none d-md-block">
                     <nav>                  
                         <ul id="navigation">    
                             <li><a href="{{ route('client.home' )}}">Trang chủ</a></li>
-                            <li><a href="{{ route('client.category') }}">Danh mục</a></li>
+                            <li><a href="{{ route('client.category', 0) }}">Danh mục</a></li>
                             <li><a href="about.html">Giới thiệu</a></li>
                             <li><a href="latest_news.html">Tin mới nhất</a></li>
                             <li><a href="contact.html">Liên hệ</a></li>

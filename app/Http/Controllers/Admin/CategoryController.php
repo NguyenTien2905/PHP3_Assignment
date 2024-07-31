@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreCategoryRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        // dd($categories);
+        return view('admins.categories.index', compact('categories'));
     }
 
     /**
@@ -20,15 +24,23 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+
+
+        if ($request->isMethod('POST')) {
+            $dataInput = $request->except('_token');
+        };
+
+        Category::create($dataInput);
+
+        return redirect()->route('admin.categories.index')->with('success', 'Thêm danh mục thành công');
     }
 
     /**
@@ -42,9 +54,11 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(String $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admins.categories.edit', compact('category'));
     }
 
     /**
@@ -52,7 +66,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->isMethod('PUT')) {
+            $dataInput = $request->except('_token', '_method');
+
+            $category = Category::findOrFail($id);
+
+            $category->update($dataInput);
+
+            return redirect()->route('admin.categories.index')->with('success', 'Cập nhật danh mục thành công');
+        };
+
+        return redirect()->back();
     }
 
     /**
@@ -60,6 +84,10 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with('success', 'Xóa danh mục thành công');
     }
 }
