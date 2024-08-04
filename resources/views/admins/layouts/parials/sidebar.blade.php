@@ -40,7 +40,7 @@
                         <i data-feather="align-center"></i>
                         <span> Danh mục </span>
                     </a>
-                    <a class='tp-link' href=''>
+                    <a class='tp-link' href='{{ route('admin.articles.index') }}'>
                         <i data-feather="book-open"></i>
                         <span> Bài viết </span>
                     </a>

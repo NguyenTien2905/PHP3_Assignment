@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Client\HomeController;
@@ -40,5 +41,17 @@ Route::prefix('admin')
             Route::get('{id}/edit', [CategoryController::class, 'edit'])->name('edit');
             Route::put('{id}/update', [CategoryController::class, 'update'])->name('update');
             Route::delete('{id}/delete', [CategoryController::class, 'destroy'])->name('delete');
+        });
+
+        Route::prefix('articles')
+        ->as('articles.')
+        ->group(function () {
+            Route::get('/', [ArticleController::class, 'index'])->name('index');
+            Route::get('/create', [ArticleController::class, 'create'])->name('create');
+            Route::post('/store', [ArticleController::class, 'store'])->name('store');
+            Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');
+            Route::get('{id}/edit', [ArticleController::class, 'edit'])->name('edit');
+            Route::put('{id}/update', [ArticleController::class, 'update'])->name('update');
+            Route::delete('{id}/delete', [ArticleController::class, 'destroy'])->name('delete');
         });
     });

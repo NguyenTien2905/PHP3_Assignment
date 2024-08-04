@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreArticleRequest;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -13,7 +16,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-       
+        $articles = Article::query()->whereNull('deleted_at')->latest('id')->paginate(10);
+
+        return view('admins.articles.index', compact('articles'));
     }
 
     /**
@@ -21,15 +26,35 @@ class ArticleController extends Controller
      */
     public function create(Request $request)
     {
-        
+        $categories = Category::all();
+        return view('admins.articles.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreArticleRequest $request)
     {
-        //
+
+        try {
+            if ($request->isMethod('POST')) {
+                $dataInput = $request->except('_token');
+
+                if ($request->hasFile('image_url')) {
+                    $dataInput['image_url'] = Storage::put('articles', $request->file('image_url'));
+                } else {
+                    $dataInput['image_url'] = null;
+                }
+
+                $dataInput['user_id'] = 1;
+
+                Article::create($dataInput);
+
+                return redirect()->route('admin.articles.index')->with('success', 'Thêm sản phẩm thành công');
+            };
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
     /**
@@ -37,7 +62,9 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $article = Article::findOrFail($id);
+
+        return view('admins.articles.show', compact('article'));
     }
 
     /**
@@ -45,7 +72,12 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $categories = Category::all();
+
+        $article = Article::findOrFail($id);
+
+        return view('admins.articles.edit', compact('categories', 'article'));
     }
 
     /**
@@ -53,7 +85,30 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            if ($request->isMethod('PUT')) {
+                $dataInput = $request->except('_token', '_method');
+
+                $article = Article::findOrFail($id);
+
+                if ($request->hasFile('image_url')) {
+                    if ($article->image_url && Storage::disk('public')->exists($article->image_url)) {
+                        Storage::disk('public')->delete($article->image_url);
+                    }
+                    $dataInput['image_url'] = Storage::put('articles', $request->file('image_url'));
+                } else {
+                    $dataInput['image_url'] = $article->image_url;
+                }
+
+                $dataInput['user_id'] = 1;
+
+                $article->update($dataInput);
+
+                return redirect()->route('admin.articles.index')->with('success', 'Thao tác thành công');
+            };
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
     /**
@@ -61,6 +116,9 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->delete(); // Thao tác xóa mềm
+
+        return redirect()->back()->with('success', 'Thao tác thành công');
     }
 }
