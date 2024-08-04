@@ -18,15 +18,15 @@
                                 <h2>{{ $item->title }}</h2>
                             </div>
                             <div class="feature-img">
-                                <img class="img-fluid" src="{{ $item->image_url }}" alt="">
+                                <img class="img-fluid" src="{{ Storage::url($item->image_url) }}" alt="">
                             </div>
                             <div class="blog_details">
                                 <ul class="blog-info-link mt-3 mb-4">
-                                    <li><a href=""><i class="fa fa-user"></i>{{ $item->name }}</a></li>
+                                    <li><a href=""><i class="fa fa-user"></i>{{ $item->user->name }}</a></li>
                                     <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                 </ul>
                                 <p>
-                                   {!! nl2br(e($item->content)) !!}
+                                   {!! $item->content !!}
                                 </p>
                             </div>
                         </div>

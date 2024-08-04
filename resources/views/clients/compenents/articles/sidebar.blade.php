@@ -31,7 +31,7 @@
             <h3 class="widget_title">Recent Post</h3>
             @foreach ($posts as $item)
                 <div class="media post_item">
-                    <img style="max-height: 80px;" src="{{ $item->image_url }}" alt="post">
+                    <img style="max-height: 80px;" src="{{ Storage::url($item->image_url) }}" alt="post">
                     <div class="media-body">
                         <a href="{{ route('article-show', $item->id) }}">
                             <h3>{{ $item->title }}</h3>

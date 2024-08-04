@@ -20,7 +20,7 @@
                             @foreach ($articles as $item)
                                 <article class="blog_item">
                                     <div class="blog_item_img">
-                                        <img class="card-img rounded-0" src="{{ $item->image_url }}" alt="">
+                                        <img class="card-img rounded-0" src="{{ Storage::url($item->image_url) }}" alt="">
                                         <a href="#" class="blog_item_date">
                                             {{ $item->created_at }}
                                         </a>
@@ -29,9 +29,8 @@
                                         <a class="d-inline-block" href="{{ route('article-show', $item->id) }}s">
                                             <h2>{{ $item->title }}</h2>
                                         </a>
-                                        <p class="text-truncate">{{ $item->content}}</p>
                                         <ul class="blog-info-link">
-                                            <li><a href="{{ route('client.category', $item->category_id) }}"><i class="fa fa-user"></i> {{ $item->name}}</a></li>
+                                            <li><a href="{{ route('client.category', $item->category_id) }}"><i class="fa fa-user"></i> {{ $item->user->name}}</a></li>
                                             <li><i class="fa fa-comments"></i> 03 Comments</a></li>
                                         </ul>
                                     </div>

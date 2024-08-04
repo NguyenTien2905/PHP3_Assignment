@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::get('/', [HomeController::class, 'index'])->name('client.home');
 Route::get('categories/{category_id?}', [HomeController::class, 'category'])->name('client.category');
 Route::get('articles/{article_id}', [PostController::class, 'show'])->name('article-show');
 Route::get('search', [PostController::class, 'search'])->name('article-search');
+
+Auth::routes();
 
 
 //Route Admin
@@ -69,3 +72,7 @@ Route::prefix('admin')
             Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
         });
     });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

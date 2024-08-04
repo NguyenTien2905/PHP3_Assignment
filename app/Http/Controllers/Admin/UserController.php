@@ -109,7 +109,7 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Thao tác thành công');
     }
 
-    public function resetPass(string $id)
+    public function resetPass(Request $request, string $id)
     {
         try {
             if ($request->isMethod('PUT')) {

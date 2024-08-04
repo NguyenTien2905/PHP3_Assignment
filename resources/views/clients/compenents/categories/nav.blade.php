@@ -9,11 +9,10 @@
             <!--Nav Button  -->
             <nav>
                 <div class="nav nav-tabs " id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="{{ route('client.category', 0 ) }}"
-                        role="tab" aria-controls="nav-home" aria-selected="true">All</a>
+                    <a class="nav-item nav-link" href="{{ route('client.category', 0) }}">All</a>
                     @foreach ($categories as $item)
-                        <a class="nav-item nav-link " id="nav-profile-tab" data-toggle="tab" href=" {{ route('client.category', $item->id) }}"
-                            role="tab" aria-controls="nav-profile" aria-selected="false" >{{ $item->name }}</a>
+                        <a class="nav-item nav-link"
+                            href="{{ route('client.category', $item->id) }}">{{ $item->name }}</a>
                     @endforeach
                 </div>
             </nav>

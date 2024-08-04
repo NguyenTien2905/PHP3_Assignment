@@ -30,7 +30,7 @@
                     <div class="col-lg-8">
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
-                            @foreach ($post as $item)
+                            @foreach ($mostViewPost as $item)
                                 @include('clients.compenents.trending-top-img')
                             @endforeach
 
@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="weekly-news-active dot-style d-flex dot-style">
-                            @foreach ($posts as $item)
+                            @foreach ($latestPosts as $item)
                                 @include('clients.compenents.weekly-news')
                             @endforeach
                         </div>
