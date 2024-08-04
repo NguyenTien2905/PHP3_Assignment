@@ -36,8 +36,8 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
 
-        // try {
-            if ($request->isMethod('POST')) {
+        try {
+           if ($request->isMethod('POST')) {
                 $dataInput = $request->except('_token');
 
                 if ($request->hasFile('image_url')) {
@@ -51,10 +51,10 @@ class ArticleController extends Controller
                 Article::create($dataInput);
 
                 return redirect()->route('admin.articles.index')->with('success', 'Thêm sản phẩm thành công');
-            };
-        // } catch (\Throwable $th) {
-        //     return redirect()->back()->with('error', $th->getMessage());
-        // }
+            }; 
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
     /**
