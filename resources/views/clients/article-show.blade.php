@@ -22,7 +22,7 @@
                             </div>
                             <div class="blog_details">
                                 <ul class="blog-info-link mt-3 mb-4">
-                                    <li><a href=""><i class="fa fa-user"></i>{{ $item->user->name }}</a></li>
+                                    <li><a href=""><i class="fa fa-user"></i>{{ $item->name }}</a></li>
                                     <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                 </ul>
                                 <p>

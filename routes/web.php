@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Client\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +31,7 @@ Auth::routes();
 
 //Route Admin
 Route::prefix('admin')
+    ->middleware(['auth', 'checkAdminVsAuthor'])
     ->as('admin.')
     ->group(function () {
         Route::get('dashbroad', [DashboardController::class, 'index'])->name('dashboard');

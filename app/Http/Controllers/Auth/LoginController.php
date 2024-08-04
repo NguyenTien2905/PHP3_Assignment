@@ -27,6 +27,15 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
+    public function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
+    }
+
     /**
      * Create a new controller instance.
      *

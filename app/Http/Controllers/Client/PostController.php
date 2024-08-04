@@ -15,6 +15,10 @@ class PostController extends Controller
     public function show($id)
     {
         $article = Article::query()->where('status', 'show')->where('id', $id)->get();
+        
+        $post = Article::findOrFail($id);
+
+        $post->increment('views');
 
         $categories = Category::all();
 
