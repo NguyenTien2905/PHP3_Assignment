@@ -14,24 +14,25 @@ class Article extends Model
         'title',
         'content',
         'image_url',
+        'views',
+        'status',
         'category_id',
         'is_active',
         'user_id',
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
-    }
-
-    public function views(){
-        return $this->hasMany(View::class);
     }
 }

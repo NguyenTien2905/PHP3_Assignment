@@ -62,23 +62,22 @@
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->category->name }}</td>
                                             <td>{{ $item->user->name }}</td>
+                                            <td>{{ $item->viewss }}</td>
                                             <td>
-                                                @foreach ($item->views as $view)
-                                                    {{ $view->view_count }}
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @if ($item->status == 1)
+                                                @if ($item->status === 'Pending')
+                                                    <span class="text-success">Đang chờ duyệt</span>
+                                                @endif
+                                                @if ($item->status === 'Show')
                                                     <span class="text-primary">Hiển thị</span>
-                                                @else
+                                                @endif
+                                                @if ($item->status == 'Hide')
                                                     <span class="text-danger">Ẩn</span>
                                                 @endif
-
                                             </td>
 
                                             <td class="text-center">
-                                                <a href="{{ route('admin.articles.edit', $item->id) }}"><i
-                                                        data-feather="edit"></i></a>
+                                                <a href="{{ route('admin.articles.show', $item->id) }}"><i
+                                                        data-feather="eye"></i></a>
                                                 <a href="{{ route('admin.articles.edit', $item->id) }}"><i
                                                         data-feather="edit"></i></a>
                                                 <form action="{{ route('admin.articles.delete', $item->id) }}"

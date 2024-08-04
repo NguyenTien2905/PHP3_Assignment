@@ -36,7 +36,7 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
 
-        try {
+        // try {
             if ($request->isMethod('POST')) {
                 $dataInput = $request->except('_token');
 
@@ -52,9 +52,9 @@ class ArticleController extends Controller
 
                 return redirect()->route('admin.articles.index')->with('success', 'Thêm sản phẩm thành công');
             };
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', $th->getMessage());
-        }
+        // } catch (\Throwable $th) {
+        //     return redirect()->back()->with('error', $th->getMessage());
+        // }
     }
 
     /**

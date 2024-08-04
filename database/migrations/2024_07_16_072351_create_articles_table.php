@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->text('content');
             $table->string('image_url', 255)->nullable();
-            $table->enum('status', ['Pending', 'Show', 'Hide']);
+            $table->enum('status', ['Pending', 'Show', 'Hide'])->default('Show');
             $table->unsignedBigInteger('views')->default(0);
             $table->foreignIdFor(Category::class)->constrained();
             $table->foreignIdFor(User::class)->constrained();
