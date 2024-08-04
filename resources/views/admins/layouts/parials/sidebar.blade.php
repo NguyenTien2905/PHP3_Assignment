@@ -47,11 +47,11 @@
                 </li>
                 <li class="menu-title mt-2">Tải khoản</li>
                 <li>
-                    <a class='tp-link' href=''>
+                    <a class='tp-link' href='{{ route('admin.users.index') }}'>
                         <i data-feather="users"></i>
                         <span> Quản lý </span>
                     </a>
-                    <a class='tp-link' href=''>
+                    <a class='tp-link' href='{{ route('admin.users.create') }}'>
                         <i data-feather="user-plus"></i>
                         <span> Tạo tài khoản Admin </span>
                     </a>

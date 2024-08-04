@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\PostController;
 use Illuminate\Support\Facades\Route;
@@ -53,5 +54,18 @@ Route::prefix('admin')
             Route::get('{id}/edit', [ArticleController::class, 'edit'])->name('edit');
             Route::put('{id}/update', [ArticleController::class, 'update'])->name('update');
             Route::delete('{id}/delete', [ArticleController::class, 'destroy'])->name('delete');
+        });
+
+        Route::prefix('users')
+        ->as('users.')
+        ->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/create', [UserController::class, 'create'])->name('create');
+            Route::post('/store', [UserController::class, 'store'])->name('store');
+            Route::get('/show/{id}', [UserController::class, 'show'])->name('show');
+            Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
+            Route::put('{id}/update', [UserController::class, 'update'])->name('update');
+            Route::put('{id}/resetPass', [UserController::class, 'resetPass'])->name('resetPass');
+            Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
         });
     });

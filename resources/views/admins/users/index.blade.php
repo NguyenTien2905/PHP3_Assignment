@@ -1,7 +1,7 @@
 @extends('admins.layouts.master')
 
 @section('title')
-    Quản lý tin tức
+    Quản lý người dùng
 @endsection
 
 @section('css')
@@ -35,52 +35,61 @@
                             </div>
                         @endif
                         <div class="card-body">
-                            <a href="{{ route('admin.articles.create') }}" class="btn btn-success mb-2">Thêm loại tin</a>
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-2">Thêm loại tin</a>
                             <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>ID</th>
                                         <th>Ảnh đại diện</th>
-                                        <th>Title</th>
-                                        <th>Danh mục</th>
-                                        <th>Tác giả</th>
-                                        <th>Lượt xem</th>
-                                        <th>Trạng thái</th>
+                                        <th>Tên tài khoản</th>
+                                        <th>Email</th>
+                                        <th>Loại người dùng</th>
+                                        <th>Ngày tạo</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($articles as $key => $item)
+                                    @foreach ($users as $key => $user)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $user->id }}</td>
                                             <td class="text-center">
-                                                <img src="{{ Storage::url($item->image_url) }}" alt=""
-                                                    style="height:100px">
+                                                @if ($user->avatar == null)
+                                                    <img src="/assets/defautlt_img/avatar-default-symbolic-icon-479x512-n8sg74wg.png"
+                                                        alt="" style="height: 50px">
+                                                @else
+                                                    <img src="{{ Storage::url($user->avatar) }}" alt=""
+                                                        style="height: 50px">
+                                                @endif
                                             </td>
-                                            <td>{{ $item->title }}</td>
-                                            <td>{{ $item->category->name }}</td>
-                                            <td>{{ $item->user->name }}</td>
-                                            <td>{{ $item->viewss }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
                                             <td>
-                                                @if ($item->status === 'Pending')
-                                                    <span class="text-success">Đang chờ duyệt</span>
+                                                @if ($user->type == 'admin')
+                                                    <span>Admin</span>
                                                 @endif
-                                                @if ($item->status === 'Show')
-                                                    <span class="text-primary">Hiển thị</span>
+                                                @if ($user->type == 'member')
+                                                    <span>Thành viên</span>
                                                 @endif
-                                                @if ($item->status === 'Hide')
-                                                    <span class="text-danger">Ẩn</span>
+                                                @if ($user->type == 'author')
+                                                    <span>Người viết bài</span>
                                                 @endif
                                             </td>
-
+                                            <td>
+                                                {{ $user->created_at }}
+                                            </td>
                                             <td class="text-center">
-                                                <a href="{{ route('admin.articles.show', $item->id) }}"><i
-                                                        data-feather="eye"></i></a>
-                                                <a href="{{ route('admin.articles.edit', $item->id) }}"><i
+                                                <a href="{{ route('admin.users.edit', $user->id) }}"><i
                                                         data-feather="edit"></i></a>
-                                                <form action="{{ route('admin.articles.delete', $item->id) }}"
+                                                <form action="{{ route('admin.users.resetPass', $user->id) }}"
+                                                    method="POST" class="d-inline"
+                                                    onclick="if(!confirm('Bạn chắc chắn muốn reset mật khẩu không?')){event.preventDefault()}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="border-0 bg-white">
+                                                        <i data-feather="refresh-ccw"></i>
+                                                    </button>
+                                                </form>
+                                                <form action="{{ route('admin.users.delete', $user->id) }}"
                                                     method="POST" class="d-inline"
                                                     onclick="if(!confirm('Bạn chắc chắn muốn xóa không?')){event.preventDefault()}">
                                                     @csrf
@@ -98,7 +107,8 @@
 
                     </div>
                 </div>
-                {{ $articles->links() }}
+
+                {{ $users->links() }}
             </div>
 
         </div> <!-- container-fluid -->
