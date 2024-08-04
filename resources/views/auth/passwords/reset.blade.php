@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header"><h1 class="text-center mt-5">Nhập mật khẩu mới </h1></div>
 
-                <div class="card-body">
+                <div class="card-body container-fluid" style="max-width: 500px">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
@@ -52,7 +52,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
+                                    Khôi phục mật khẩu
                                 </button>
                             </div>
                         </div>
