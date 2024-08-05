@@ -35,7 +35,10 @@
                             </div>
                         @endif
                         <div class="card-body">
-                            <a href="{{ route('admin.articles.create') }}" class="btn btn-success mb-2">Thêm loại tin</a>
+                            @if (Auth::user()->type === 'author')
+                                 <a href="{{ route('admin.articles.create') }}" class="btn btn-success mb-2">Thêm tin tức</a>
+                            @endif
+                           
                             <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                                 <thead>
                                     <tr>
@@ -62,7 +65,7 @@
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->category->name }}</td>
                                             <td>{{ $item->user->name }}</td>
-                                            <td>{{ $item->viewss }}</td>
+                                            <td>{{ $item->views }}</td>
                                             <td>
                                                 @if ($item->status === 'Pending')
                                                     <span class="text-success">Đang chờ duyệt</span>
@@ -80,15 +83,19 @@
                                                         data-feather="eye"></i></a>
                                                 <a href="{{ route('admin.articles.edit', $item->id) }}"><i
                                                         data-feather="edit"></i></a>
-                                                <form action="{{ route('admin.articles.delete', $item->id) }}"
-                                                    method="POST" class="d-inline"
-                                                    onclick="if(!confirm('Bạn chắc chắn muốn xóa không?')){event.preventDefault()}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="border-0 bg-white">
-                                                        <i data-feather="trash"></i>
-                                                    </button>
-                                                </form>
+
+                                                @if ( Auth::user()->type === 'admin')
+                                                    <form action="{{ route('admin.articles.delete', $item->id) }}"
+                                                        method="POST" class="d-inline"
+                                                        onclick="if(!confirm('Bạn chắc chắn muốn xóa không?')){event.preventDefault()}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="border-0 bg-white">
+                                                            <i data-feather="trash"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+
                                         </tr>
                                     @endforeach
 

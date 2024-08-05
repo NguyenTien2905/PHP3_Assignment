@@ -32,6 +32,12 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        @if (Auth::user()->type === 'admin' || Auth::user()->type === 'author')
+                                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                                Vào trang admin/author
+                                            </a>
+                                        @endif
+
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -18,7 +18,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && (Auth::user()->type === User::ROLE_ADMIN ||  Auth::user()->type === User::ROLE_AUTHOR)) {
-            return redirect()->route('admin.dashboard');
+            return $next($request);
         }
 
         abort(403);

@@ -35,7 +35,7 @@
                             </div>
                         @endif
                         <div class="card-body">
-                            <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-2">Thêm loại tin</a>
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-2">Thêm Admin/Author</a>
                             <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                                 <thead>
                                     <tr>

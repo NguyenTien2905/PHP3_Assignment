@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\StoreArticleRequest;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -46,7 +47,8 @@ class ArticleController extends Controller
                     $dataInput['image_url'] = null;
                 }
 
-                $dataInput['user_id'] = 1;
+        
+                $dataInput['user_id'] = Auth::id();
 
                 Article::create($dataInput);
 

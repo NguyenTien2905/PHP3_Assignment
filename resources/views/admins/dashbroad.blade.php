@@ -24,8 +24,14 @@
         <div class="row">
             <div class="col-md-12 col-xl-12">
                 <div class="row g-3">
-
+                    @if (Auth::user()->type === 'admin')
+                         <h1>Chào mừng bạn vào trang quản trị của Admin</h1>
+                    @else
+                        <h1>Chào mừng bạn vào trang viết bài của Author</h1>
+                    @endif
+                   
                     <div class="col-md-6 col-xl-3">
+                        
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">

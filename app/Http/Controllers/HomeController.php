@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $mostViewPost = Article::query()->where('status', 'show')->orderByDesc('views')->limit(1)->get();
 
-        $latestPosts = Article::query()->where('status', 'show')->latest('id')->get();
+        $latestPosts = Article::query()->where('status', 'show')->latest('id')->limit(8)->get();
 
         $collection = collect($latestPosts);
         $postChuck = $collection->chunk(5);

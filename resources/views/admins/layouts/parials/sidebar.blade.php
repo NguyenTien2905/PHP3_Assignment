@@ -36,26 +36,32 @@
 
                 <li class="menu-title">Bài viết</li>
                 <li>
-                    <a class='tp-link' href='{{ route('admin.categories.index') }}'>
-                        <i data-feather="align-center"></i>
-                        <span> Danh mục </span>
-                    </a>
+                    @if (Auth::user()->type === 'admin')
+                        <a class='tp-link' href='{{ route('admin.categories.index') }}'>
+                            <i data-feather="align-center"></i>
+                            <span> Danh mục </span>
+                        </a>
+                    @endif
+
                     <a class='tp-link' href='{{ route('admin.articles.index') }}'>
                         <i data-feather="book-open"></i>
                         <span> Bài viết </span>
                     </a>
                 </li>
-                <li class="menu-title mt-2">Tải khoản</li>
-                <li>
-                    <a class='tp-link' href='{{ route('admin.users.index') }}'>
-                        <i data-feather="users"></i>
-                        <span> Quản lý </span>
-                    </a>
-                    <a class='tp-link' href='{{ route('admin.users.create') }}'>
-                        <i data-feather="user-plus"></i>
-                        <span> Tạo tài khoản Admin </span>
-                    </a>
-                </li>
+                @if (Auth::user()->type === 'admin')
+                    <li class="menu-title mt-2">Tải khoản</li>
+                    <li>
+                        <a class='tp-link' href='{{ route('admin.users.index') }}'>
+                            <i data-feather="users"></i>
+                            <span> Quản lý </span>
+                        </a>
+                        <a class='tp-link' href='{{ route('admin.users.create') }}'>
+                            <i data-feather="user-plus"></i>
+                            <span> Tạo tài khoản Admin </span>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
 
         </div>

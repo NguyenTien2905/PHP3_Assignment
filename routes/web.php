@@ -34,7 +34,7 @@ Route::prefix('admin')
     ->middleware(['auth', 'checkAdminVsAuthor'])
     ->as('admin.')
     ->group(function () {
-        Route::get('dashbroad', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::prefix('categories')
         ->as('categories.')
