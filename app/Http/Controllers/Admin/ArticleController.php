@@ -38,7 +38,6 @@ class ArticleController extends Controller
     {
 
         try {
-           if ($request->isMethod('POST')) {
                 $dataInput = $request->except('_token');
 
                 if ($request->hasFile('image_url')) {
@@ -53,7 +52,6 @@ class ArticleController extends Controller
                 Article::create($dataInput);
 
                 return redirect()->route('admin.articles.index')->with('success', 'Thêm sản phẩm thành công');
-            }; 
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -88,7 +86,6 @@ class ArticleController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-            if ($request->isMethod('PUT')) {
                 $dataInput = $request->except('_token', '_method');
 
                 $article = Article::findOrFail($id);
@@ -107,7 +104,6 @@ class ArticleController extends Controller
                 $article->update($dataInput);
 
                 return redirect()->route('admin.articles.index')->with('success', 'Thao tác thành công');
-            };
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

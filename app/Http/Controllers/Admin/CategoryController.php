@@ -66,7 +66,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if ($request->isMethod('PUT')) {
             $dataInput = $request->except('_token', '_method');
 
             $category = Category::findOrFail($id);
@@ -74,9 +73,7 @@ class CategoryController extends Controller
             $category->update($dataInput);
 
             return redirect()->route('admin.categories.index')->with('success', 'Cập nhật danh mục thành công');
-        };
-
-        return redirect()->back();
+ 
     }
 
     /**

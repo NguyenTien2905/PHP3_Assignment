@@ -34,7 +34,6 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         try {
-            if ($request->isMethod('POST')) {
                 $dataInput = $request->except('_token');
 
                 if ($request->hasFile('avatar')) {
@@ -46,7 +45,6 @@ class UserController extends Controller
                 User::create($dataInput);
 
                 return redirect()->route('admin.users.index')->with('success', 'Thêm thành công');
-            };
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
