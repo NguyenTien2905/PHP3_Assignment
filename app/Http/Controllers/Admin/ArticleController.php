@@ -38,20 +38,20 @@ class ArticleController extends Controller
     {
 
         try {
-                $dataInput = $request->except('_token');
+            $dataInput = $request->except('_token');
 
-                if ($request->hasFile('image_url')) {
-                    $dataInput['image_url'] = Storage::put('articles', $request->file('image_url'));
-                } else {
-                    $dataInput['image_url'] = null;
-                }
+            if ($request->hasFile('image_url')) {
+                $dataInput['image_url'] = Storage::put('articles', $request->file('image_url'));
+            } else {
+                $dataInput['image_url'] = null;
+            }
 
-        
-                $dataInput['user_id'] = Auth::id();
 
-                Article::create($dataInput);
+            $dataInput['user_id'] = Auth::id();
 
-                return redirect()->route('admin.articles.index')->with('success', 'Thêm sản phẩm thành công');
+            Article::create($dataInput);
+
+            return redirect()->route('admin.articles.index')->with('success', 'Thêm sản phẩm thành công');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -86,24 +86,22 @@ class ArticleController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-                $dataInput = $request->except('_token', '_method');
+            $dataInput = $request->except('_token', '_method');
 
-                $article = Article::findOrFail($id);
+            $article = Article::findOrFail($id);
 
-                if ($request->hasFile('image_url')) {
-                    if ($article->image_url && Storage::disk('public')->exists($article->image_url)) {
-                        Storage::disk('public')->delete($article->image_url);
-                    }
-                    $dataInput['image_url'] = Storage::put('articles', $request->file('image_url'));
-                } else {
-                    $dataInput['image_url'] = $article->image_url;
+            if ($request->hasFile('image_url')) {
+                if ($article->image_url && Storage::disk('public')->exists($article->image_url)) {
+                    Storage::disk('public')->delete($article->image_url);
                 }
+                $dataInput['image_url'] = Storage::put('articles', $request->file('image_url'));
+            } else {
+                $dataInput['image_url'] = $article->image_url;
+            }
 
-                $dataInput['user_id'] = 1;
+            $article->update($dataInput);
 
-                $article->update($dataInput);
-
-                return redirect()->route('admin.articles.index')->with('success', 'Thao tác thành công');
+            return redirect()->route('admin.articles.index')->with('success', 'Thao tác thành công');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
